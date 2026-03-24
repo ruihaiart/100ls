@@ -94,17 +94,17 @@
   /* 自定义播放器 */
   .player{background:#f8f8f8;border-radius:14px;padding:14px 16px;margin-bottom:6px}
   .player-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .p-btn{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background .15s}
+  .p-btn{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:background .15s;-webkit-tap-highlight-color:transparent}
   .p-play{background:#1d4ed8;color:white}
   .p-play:hover{background:#1e40af}
-  .p-loop{background:white;border:1.5px solid #d1d1d6;color:#8e8e93;font-size:13px;width:auto;padding:0 12px;border-radius:18px;height:34px}
+  .p-loop{background:white;border:1.5px solid #d1d1d6;color:#8e8e93;font-size:12px;font-weight:600;width:auto;padding:0 11px;border-radius:18px;height:34px;white-space:nowrap}
   .p-loop.active{border-color:#1d4ed8;background:#eff6ff;color:#1d4ed8}
-  .p-time{font-size:13px;color:#8e8e93;font-variant-numeric:tabular-nums;white-space:nowrap;margin-left:auto}
-  .p-progress-wrap{position:relative;height:6px;background:#e5e7eb;border-radius:3px;cursor:pointer}
-  .p-progress-fill{height:100%;background:#1d4ed8;border-radius:3px;width:0%;transition:width .1s linear;pointer-events:none}
-  .p-progress-thumb{position:absolute;top:50%;right:0;width:14px;height:14px;background:#1d4ed8;border-radius:50%;transform:translate(50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.2);pointer-events:none}
+  .p-time{font-size:12px;color:#8e8e93;font-variant-numeric:tabular-nums;white-space:nowrap;margin-left:auto;min-width:80px;text-align:right}
+  .p-progress-wrap{position:relative;height:6px;background:#e5e7eb;border-radius:3px;cursor:pointer;touch-action:none}
+  .p-progress-fill{position:absolute;top:0;left:0;height:100%;background:#1d4ed8;border-radius:3px;width:0%;pointer-events:none}
+  .p-progress-thumb{position:absolute;top:50%;width:14px;height:14px;background:#1d4ed8;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.25);pointer-events:none;left:0%}
   .p-speed-row{display:flex;gap:6px;margin-top:10px}
-  .p-speed{background:white;border:1.5px solid #e5e7eb;color:#636366;border-radius:10px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer}
+  .p-speed{background:white;border:1.5px solid #e5e7eb;color:#636366;border-radius:10px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .p-speed.active{border-color:#1d4ed8;background:#eff6ff;color:#1d4ed8}
 </style>
 </head>
@@ -551,7 +551,7 @@ function fmt(s){
   return m+':'+(ss<10?'0':'')+ss;
 }
 function updateBar(){
-  const pct = audio.duration ? (audio.currentTime/audio.duration)*100 : 0;
+  const pct = (audio.duration&&isFinite(audio.duration)) ? (audio.currentTime/audio.duration)*100 : 0;
   document.getElementById('progressFill').style.width = pct+'%';
   document.getElementById('progressThumb').style.left = pct+'%';
   document.getElementById('timeDisplay').textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
@@ -567,20 +567,21 @@ function togglePlay(){
 audio.addEventListener('ended',()=>{
   if(!audio.loop) document.getElementById('playBtn').textContent='▶';
 });
-function seekAudio(e){
+function getClientX(e){return e.touches?e.touches[0].clientX:e.clientX;}
+function seekAudio(clientX){
   const wrap=document.getElementById('progressWrap');
   const rect=wrap.getBoundingClientRect();
-  const pct=(e.clientX-rect.left)/rect.width;
-  audio.currentTime=Math.max(0,Math.min(1,pct))*audio.duration;
+  const pct=Math.max(0,Math.min(1,(clientX-rect.left)/rect.width));
+  if(audio.duration&&isFinite(audio.duration)) audio.currentTime=pct*audio.duration;
 }
-// drag support
 let dragging=false;
-document.getElementById('progressWrap').addEventListener('mousedown',e=>{dragging=true;seekAudio(e);});
-document.addEventListener('mousemove',e=>{if(dragging)seekAudio({clientX:e.clientX,target:document.getElementById('progressWrap')});});
+const wrap=document.getElementById('progressWrap');
+wrap.addEventListener('mousedown',e=>{dragging=true;seekAudio(getClientX(e));e.preventDefault();});
+document.addEventListener('mousemove',e=>{if(dragging)seekAudio(getClientX(e));});
 document.addEventListener('mouseup',()=>{dragging=false;});
-// touch
-document.getElementById('progressWrap').addEventListener('touchstart',e=>{seekAudio({clientX:e.touches[0].clientX,target:e.target});},{passive:true});
-document.getElementById('progressWrap').addEventListener('touchmove',e=>{seekAudio({clientX:e.touches[0].clientX,target:e.target});},{passive:true});
+wrap.addEventListener('touchstart',e=>{dragging=true;seekAudio(getClientX(e));},{passive:true});
+wrap.addEventListener('touchmove',e=>{if(dragging)seekAudio(getClientX(e));},{passive:false});
+wrap.addEventListener('touchend',()=>{dragging=false;},{passive:true});
 
 function toggleLoop(){
   audio.loop=!audio.loop;
