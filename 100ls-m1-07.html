@@ -67,6 +67,11 @@
   .v-cn{font-size:14px;color:#333;font-weight:600;margin-bottom:8px}
   .v-block{margin-top:8px;padding-top:8px;border-top:1px solid #f5f5f5}
   .v-block-label{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#aaa;margin-bottom:5px}
+  .v-collocations{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2px}
+  .v-col-tag{background:#f0f6ff;color:#1d4ed8;font-size:12px;padding:2px 9px;border-radius:10px;font-weight:500}
+  .v-note{font-size:13px;color:#555;line-height:1.7;background:#fffbeb;padding:8px 10px;border-radius:8px;border-left:2px solid #fbbf24;margin-top:2px}
+  .v-similar{display:flex;flex-wrap:wrap;gap:6px}
+  .v-sim-tag{background:#f0fff4;color:#15803d;font-size:12px;padding:2px 9px;border-radius:10px}
   .v-examples{display:flex;flex-direction:column;gap:6px}
   .v-ex{font-size:13px;color:#636366;font-style:italic;padding:7px 10px;background:#f8f8f8;border-radius:8px;border-left:2px solid #e5e7eb;line-height:1.6}
   .v-ex-cn{font-style:normal;color:#aaa;font-size:12px;margin-top:2px}
@@ -166,56 +171,159 @@
 <div class="card">
   <div class="card-title">📚 Vocabulary</div>
   <div class="vocab-list">
+
+    <!-- 1. latte -->
     <div class="vocab-item">
-      <div class="v-head"><span class="v-word">latte</span><span class="v-ipa">/ˈlɑːteɪ/</span><span class="v-pos">n</span></div>
-      <div class="v-cn">拿铁咖啡</div>
+      <div class="v-head"><span class="v-word">latte</span><span class="v-ipa">/ˈlɑːteɪ/</span><span class="v-pos">n.</span></div>
+      <div class="v-cn">拿铁咖啡（浓缩咖啡 + 蒸奶）</div>
       <div class="v-block">
-        <div class="v-block-label">例句</div>
+        <div class="v-block-label">📝 用法说明</div>
+        <div class="v-note">源自意大利语 <em>caffè latte</em>（牛奶咖啡）。点单时直接说 "a latte"，可加尺寸前缀：<strong>small / medium / large latte</strong>；加奶类说明：<strong>oat milk latte / almond latte</strong>；加冰说明：<strong>iced latte</strong>。是咖啡馆点单的高频词。</div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔗 常见搭配</div>
+        <div class="v-collocations">
+          <span class="v-col-tag">a medium latte</span>
+          <span class="v-col-tag">an iced latte</span>
+          <span class="v-col-tag">oat milk latte</span>
+          <span class="v-col-tag">a vanilla latte</span>
+          <span class="v-col-tag">order a latte</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">💬 例句</div>
         <div class="v-examples">
-          <div class="v-ex">Can I get a medium latte?<div class="v-ex-cn">我可以要一杯中杯拿铁吗？</div></div>
+          <div class="v-ex">Can I get a medium latte, please?<div class="v-ex-cn">我可以要一杯中杯拿铁吗？</div></div>
+          <div class="v-ex">I usually have an iced latte in the morning.<div class="v-ex-cn">我早上通常喝冰拿铁。</div></div>
+          <div class="v-ex">They do a really good oat milk latte here.<div class="v-ex-cn">这家的燕麦拿铁很不错。</div></div>
         </div>
       </div>
     </div>
+
+    <!-- 2. extra shot -->
     <div class="vocab-item">
-      <div class="v-head"><span class="v-word">extra shot</span></div>
-      <div class="v-cn">额外一份浓缩咖啡</div>
+      <div class="v-head"><span class="v-word">extra shot</span><span class="v-ipa">/ˈekstrə ʃɒt/</span><span class="v-pos">n. phrase</span></div>
+      <div class="v-cn">额外一份浓缩咖啡（加强咖啡因的常见方式）</div>
       <div class="v-block">
-        <div class="v-block-label">例句</div>
+        <div class="v-block-label">📝 用法说明</div>
+        <div class="v-note"><strong>shot</strong> 指一份浓缩咖啡（espresso shot，约 30ml）。标准拿铁含 1–2 shots。要求加 shot 可说 <strong>"add an extra shot"</strong> 或 <strong>"make it a double"</strong>（要双份）。也常说 <strong>a double shot latte</strong>。</div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔗 常见搭配</div>
+        <div class="v-collocations">
+          <span class="v-col-tag">add an extra shot</span>
+          <span class="v-col-tag">a double shot</span>
+          <span class="v-col-tag">a single shot</span>
+          <span class="v-col-tag">make it a double</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">💬 例句</div>
         <div class="v-examples">
-          <div class="v-ex">Can you add an extra shot?<div class="v-ex-cn">能加一份浓缩吗？</div></div>
+          <div class="v-ex">Can you add an extra shot? I need the caffeine.<div class="v-ex-cn">能加一份浓缩吗？我需要咖啡因。</div></div>
+          <div class="v-ex">I always get a double shot in my morning coffee.<div class="v-ex-cn">我早上的咖啡总是要双份浓缩。</div></div>
+          <div class="v-ex">Could you make it a double? I have a long day ahead.<div class="v-ex-cn">能做双份浓缩吗？今天有得忙了。</div></div>
         </div>
       </div>
     </div>
+
+    <!-- 3. milk preference -->
     <div class="vocab-item">
-      <div class="v-head"><span class="v-word">milk preference</span></div>
-      <div class="v-cn">牛奶偏好</div>
+      <div class="v-head"><span class="v-word">milk preference</span><span class="v-ipa">/mɪlk ˈprefrəns/</span><span class="v-pos">n. phrase</span></div>
+      <div class="v-cn">牛奶偏好（点单时对奶类的个人选择）</div>
       <div class="v-block">
-        <div class="v-block-label">例句</div>
+        <div class="v-block-label">📝 用法说明</div>
+        <div class="v-note">现代咖啡馆通常提供多种奶类：<strong>whole milk</strong>（全脂）/ <strong>skim milk</strong>（脱脂）/ <strong>oat milk</strong>（燕麦奶）/ <strong>almond milk</strong>（杏仁奶）/ <strong>soy milk</strong>（豆奶）。"Any milk preference?" 是服务员的礼貌问法，等同于 "What kind of milk would you like?"</div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔗 常见搭配</div>
+        <div class="v-collocations">
+          <span class="v-col-tag">any milk preference?</span>
+          <span class="v-col-tag">dairy-free milk</span>
+          <span class="v-col-tag">plant-based milk</span>
+          <span class="v-col-tag">milk alternative</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">💬 例句</div>
         <div class="v-examples">
-          <div class="v-ex">Any milk preference?<div class="v-ex-cn">有什么牛奶偏好吗？</div></div>
+          <div class="v-ex">Any milk preference? We have oat, almond, and soy.<div class="v-ex-cn">有什么牛奶偏好吗？我们有燕麦奶、杏仁奶和豆奶。</div></div>
+          <div class="v-ex">Do you have a milk preference, or should I use regular?<div class="v-ex-cn">你有牛奶偏好吗，还是用普通牛奶？</div></div>
         </div>
       </div>
     </div>
+
+    <!-- 4. oat milk -->
     <div class="vocab-item">
-      <div class="v-head"><span class="v-word">oat milk</span></div>
-      <div class="v-cn">燕麦奶</div>
+      <div class="v-head"><span class="v-word">oat milk</span><span class="v-ipa">/oʊt mɪlk/</span><span class="v-pos">n.</span></div>
+      <div class="v-cn">燕麦奶（由燕麦制成的植物性牛奶替代品）</div>
       <div class="v-block">
-        <div class="v-block-label">例句</div>
+        <div class="v-block-label">📝 用法说明</div>
+        <div class="v-note">燕麦奶是近年最流行的植物奶，口感醇厚，起泡性好，适合制作拿铁奶泡。说 <strong>"if you have it"</strong> 是一种礼貌的附加条件，表示"如果有的话"，不强迫对方必须满足要求。这是非常地道的英语表达习惯。</div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔗 常见搭配</div>
+        <div class="v-collocations">
+          <span class="v-col-tag">oat milk latte</span>
+          <span class="v-col-tag">oat milk cappuccino</span>
+          <span class="v-col-tag">switch to oat milk</span>
+          <span class="v-col-tag">dairy-free / plant-based</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔄 近义表达</div>
+        <div class="v-similar">
+          <span class="v-sim-tag">plant milk</span>
+          <span class="v-sim-tag">dairy alternative</span>
+          <span class="v-sim-tag">non-dairy milk</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">💬 例句</div>
         <div class="v-examples">
           <div class="v-ex">Oat milk, if you have it.<div class="v-ex-cn">燕麦奶，如果有的话。</div></div>
+          <div class="v-ex">I switched to oat milk about a year ago.<div class="v-ex-cn">我大约一年前换成燕麦奶了。</div></div>
+          <div class="v-ex">Oat milk froths really well for lattes.<div class="v-ex-cn">燕麦奶很适合打出拿铁的奶泡。</div></div>
         </div>
       </div>
     </div>
+
+    <!-- 5. sleeve -->
     <div class="vocab-item">
-      <div class="v-head"><span class="v-word">sleeve</span><span class="v-ipa">/sliːv/</span><span class="v-pos">n</span></div>
-      <div class="v-cn">纸杯隔热套</div>
+      <div class="v-head"><span class="v-word">sleeve</span><span class="v-ipa">/sliːv/</span><span class="v-pos">n.</span></div>
+      <div class="v-cn">纸杯隔热套；（衣服）袖子</div>
       <div class="v-block">
-        <div class="v-block-label">例句</div>
+        <div class="v-block-label">📝 用法说明</div>
+        <div class="v-note">咖啡馆中指套在热饮杯外防烫的纸质隔热套（cup sleeve / coffee sleeve）。同一个词在日常场景中更常见的含义是<strong>衣服的袖子</strong>：<em>roll up your sleeves</em>（卷起袖子）。注意区分这两种用法。</div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔗 常见搭配</div>
+        <div class="v-collocations">
+          <span class="v-col-tag">a cup sleeve</span>
+          <span class="v-col-tag">put a sleeve on</span>
+          <span class="v-col-tag">roll up your sleeves</span>
+          <span class="v-col-tag">long-sleeved</span>
+          <span class="v-col-tag">short-sleeved</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">🔄 近义表达（杯套）</div>
+        <div class="v-similar">
+          <span class="v-sim-tag">cup holder</span>
+          <span class="v-sim-tag">coffee collar</span>
+          <span class="v-sim-tag">cup jacket</span>
+        </div>
+      </div>
+      <div class="v-block">
+        <div class="v-block-label">💬 例句</div>
         <div class="v-examples">
           <div class="v-ex">Can I get a sleeve on that?<div class="v-ex-cn">能给我套个杯套吗？</div></div>
+          <div class="v-ex">The barista put a sleeve on the hot cup.<div class="v-ex-cn">咖啡师给热杯子套上了隔热套。</div></div>
+          <div class="v-ex">She rolled up her sleeves and got to work.<div class="v-ex-cn">她卷起袖子开始工作。（注意：此处是"袖子"）</div></div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
