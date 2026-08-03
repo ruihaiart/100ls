@@ -101,10 +101,22 @@
   .p-speed-row{display:flex;gap:6px;margin-top:10px}
   .p-speed{background:white;border:1.5px solid #e5e7eb;color:#636366;border-radius:10px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .p-speed.active{border-color:#1d4ed8;background:#eff6ff;color:#1d4ed8}
+
+  .nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 0 16px;gap:8px}
+  .nav-btn{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border-radius:12px;background:white;color:#1d4ed8;text-decoration:none;font-size:13px;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.06);white-space:nowrap;max-width:40%}
+  .nav-btn:hover{background:#dbeafe}
+  .nav-btn.nav-home{max-width:none;color:#555}
+  .nav-btn.disabled{opacity:.3;pointer-events:none}
+  .nav-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 </head>
 <body>
 <div class="container">
+  <nav class="nav-bar">
+    <a class="nav-btn nav-prev" href="100ls-m2-03.html">← <span class="nav-label">M2-03 打车</span></a>
+    <a class="nav-btn nav-home" href="index.html">🏠 所有课程</a>
+    <a class="nav-btn nav-next" href="100ls-m2-05.html"><span class="nav-label">M2-05 餐厅点餐</span> →</a>
+  </nav>
 
 <div class="header">
   <div class="badges">

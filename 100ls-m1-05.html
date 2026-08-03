@@ -90,10 +90,22 @@
   .cs-explain em{color:#8e8e93}
   .link{color:#c2410c;border-bottom:1px dashed #c2410c;cursor:help;font-style:italic}
   .stress{color:#1d4ed8;font-weight:600}
+
+  .nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 0 16px;gap:8px}
+  .nav-btn{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border-radius:12px;background:white;color:#1d4ed8;text-decoration:none;font-size:13px;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.06);white-space:nowrap;max-width:40%}
+  .nav-btn:hover{background:#dbeafe}
+  .nav-btn.nav-home{max-width:none;color:#555}
+  .nav-btn.disabled{opacity:.3;pointer-events:none}
+  .nav-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 </head>
 <body>
 <div class="container">
+  <nav class="nav-bar">
+    <a class="nav-btn nav-prev" href="100ls-m1-04.html">← <span class="nav-label">M1-04</span></a>
+    <a class="nav-btn nav-home" href="index.html">🏠 所有课程</a>
+    <a class="nav-btn nav-next" href="100ls-m1-06.html"><span class="nav-label">M1-06</span> →</a>
+  </nav>
 
 <div class="header">
   <div class="badges">
