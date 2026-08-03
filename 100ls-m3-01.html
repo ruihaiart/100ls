@@ -493,19 +493,28 @@ function b64ToBlob(b64, mime) {
 
 const mainAudio = document.getElementById('mainAudio');
 const sentenceAudios = [];
+let mainAudioReady = false;
 
-window.addEventListener('DOMContentLoaded', () => {
-  const blob = b64ToBlob(b64Full, 'audio/mp3');
-  mainAudio.src = URL.createObjectURL(blob);
-  b64Sentences.forEach(b64 => {
+function ensureMainAudio() {
+  if (!mainAudioReady) {
+    mainAudioReady = true;
+    const blob = b64ToBlob(b64Full, 'audio/mpeg');
+    mainAudio.src = URL.createObjectURL(blob);
+  }
+}
+
+function getSentenceAudio(idx) {
+  if (!sentenceAudios[idx]) {
     const a = new Audio();
-    a.src = URL.createObjectURL(b64ToBlob(b64, 'audio/mp3'));
-    sentenceAudios.push(a);
-  });
-});
+    a.src = URL.createObjectURL(b64ToBlob(b64Sentences[idx], 'audio/mpeg'));
+    sentenceAudios[idx] = a;
+  }
+  return sentenceAudios[idx];
+}
 
 // Main player
 function togglePlay() {
+  ensureMainAudio();
   const btn = document.getElementById('playBtn');
   if (mainAudio.paused) { mainAudio.play(); btn.textContent = '⏸'; }
   else { mainAudio.pause(); btn.textContent = '▶'; }
@@ -541,13 +550,13 @@ function seekAudio(e) {
 // Sentence player
 let currentSBtn = null;
 function playSentence(btn, idx) {
-  const audio = sentenceAudios[idx];
-  if (!audio) return;
+  // Stop any currently playing sentence
   if (currentSBtn && currentSBtn !== btn) {
-    sentenceAudios.forEach(a => { a.pause(); a.currentTime = 0; });
+    sentenceAudios.forEach(a => { if (a) { a.pause(); a.currentTime = 0; } });
     currentSBtn.textContent = '▶';
     currentSBtn.classList.remove('playing');
   }
+  const audio = getSentenceAudio(idx);
   if (audio.paused) {
     audio.play();
     btn.textContent = '⏸';
